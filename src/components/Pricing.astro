@@ -1,0 +1,112 @@
+---
+const plans = [
+  {
+    name: "Free",
+    price: "0",
+    description: "Perfect for trying out our service",
+    features: [
+      "1 domain",
+      "Basic WHOIS lookup",
+      "SSL certificate check",
+      "Daily uptime monitoring"
+    ],
+    cta: "Get started",
+    popular: false
+  },
+  {
+    name: "Basic",
+    price: "9",
+    description: "Great for personal websites",
+    features: [
+      "Up to 10 domains",
+      "Basic WHOIS analysis",
+      "SSL certificate monitoring",
+      "Daily uptime checks",
+      "Email notifications"
+    ],
+    cta: "Get started",
+    popular: false
+  },
+  {
+    name: "Pro",
+    price: "79",
+    description: "Ideal for businesses and agencies",
+    features: [
+      "Up to 50 domains",
+      "Advanced WHOIS analysis",
+      "SSL certificate monitoring & management",
+      "Hourly uptime checks",
+      "Performance analytics",
+      "API access"
+    ],
+    cta: "Get started",
+    popular: true
+  },
+  {
+    name: "Enterprise",
+    price: "199",
+    description: "For large organizations",
+    features: [
+      "Unlimited domains",
+      "Full WHOIS & DNS analysis",
+      "Advanced SSL monitoring & management",
+      "Real-time uptime monitoring",
+      "Advanced performance analytics",
+      "24/7 phone & email support",
+      "Custom integrations"
+    ],
+    cta: "Contact us",
+    popular: false
+  }
+];
+---
+
+<section id="pricing" class="py-20 bg-base-200">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <div class="badge badge-primary mb-4">Pricing</div>
+      <h2 class="text-3xl md:text-4xl font-extrabold mb-4">
+        Simple, transparent pricing
+      </h2>
+      <p class="text-lg text-base-content/70">
+        Choose the plan that best fits your needs
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      {plans.map((plan) => (
+        <div class={`card bg-base-100 shadow-xl overflow-hidden ${plan.popular ? 'border-2 border-primary' : ''}`}>
+          {plan.popular && (
+            <div class="absolute top-0 right-0">
+              <div class="badge badge-primary badge-lg rounded-none rounded-bl-lg">Popular</div>
+            </div>
+          )}
+          <div class="card-body">
+            <h3 class="card-title text-2xl font-bold">{plan.name}</h3>
+            <div class="mt-2 mb-4">
+              <span class="text-4xl font-extrabold">${plan.price}</span>
+              <span class="text-base-content/70">/month</span>
+            </div>
+            <p class="text-base-content/70 mb-4">{plan.description}</p>
+            <ul class="space-y-3 mb-6">
+              {plan.features.map((feature) => (
+                <li class="flex items-start">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-success mr-2 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>{feature}</span>
+                </li>
+              ))}
+            </ul>
+            <div class="card-actions mt-auto">
+              <a href="#" class={`btn ${plan.popular ? 'btn-primary' : 'btn-outline'} w-full`}>
+                {plan.cta}
+              </a>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+

@@ -1,0 +1,64 @@
+---
+const faqs = [
+  {
+    question: "What is TrackDomain?",
+    answer: "TrackDomain is a comprehensive domain monitoring service that helps you track and analyze your domains' health, WHOIS information, SSL certificates, and more."
+  },
+  {
+    question: "How often is my domain monitored?",
+    answer: "Monitoring frequency depends on your plan. Free plans include daily checks, Basic plans include daily checks, Pro plans include hourly checks, and Enterprise plans include real-time monitoring."
+  },
+  {
+    question: "Can I monitor domains I don't own?",
+    answer: "Yes, you can monitor any public domain. However, some features like DNS management require domain ownership verification."
+  },
+  {
+    question: "How do I get notified about issues?",
+    answer: "We offer notifications via email, SMS, Slack, and webhook integrations depending on your plan. You can configure your preferred notification methods in your account settings."
+  },
+  {
+    question: "Can I upgrade or downgrade my plan?",
+    answer: "Yes, you can change your plan at any time. When upgrading, you'll be charged the prorated difference. When downgrading, the new rate will apply at the start of your next billing cycle."
+  },
+  {
+    question: "Do you offer a free trial for paid plans?",
+    answer: "Yes, we offer a 14-day free trial for all paid plans. No credit card is required to start your trial."
+  }
+];
+---
+
+<section id="faq" class="py-20 bg-base-100">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <div class="badge badge-secondary mb-4">FAQ</div>
+      <h2 class="text-3xl md:text-4xl font-extrabold mb-4">
+        Frequently Asked Questions
+      </h2>
+      <p class="text-lg text-base-content/70">
+        Find answers to common questions about TrackDomain
+      </p>
+    </div>
+
+    <div class="max-w-3xl mx-auto">
+      <div class="space-y-4">
+        {faqs.map((faq, index) => (
+          <div class="collapse collapse-plus bg-base-200">
+            <input type="radio" name="faq-accordion" checked={index === 0} /> 
+            <div class="collapse-title text-xl font-medium">
+              {faq.question}
+            </div>
+            <div class="collapse-content">
+              <p>{faq.answer}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+    
+    <div class="text-center mt-12">
+      <p class="mb-4 text-base-content/70">Still have questions?</p>
+      <a href="#" class="btn btn-outline btn-wide">Contact Support</a>
+    </div>
+  </div>
+</section>
+

@@ -1,0 +1,130 @@
+---
+---
+
+<section class="relative overflow-hidden bg-base-100 py-16 sm:py-24">
+    <div class="absolute inset-0 bg-grid-pattern opacity-5"></div>
+    
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative">
+      <div class="flex flex-col items-center text-center max-w-4xl mx-auto">
+        <div class="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6 animate-fade-up">
+          <span class="flex h-2 w-2 rounded-full bg-primary mr-2"></span>
+          Powerful domain monitoring for everyone
+        </div>
+        
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 animate-fade-up animate-delay-100">
+          <span class="block">Monitor and analyze</span>
+          <span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">your domains</span>
+        </h1>
+        
+        <p class="text-lg md:text-xl text-base-content/80 max-w-2xl mb-10 animate-fade-up animate-delay-200">
+          Get comprehensive insights into your domain's health, WHOIS details, and SSL certificates. Stay informed and secure with real-time monitoring.
+        </p>
+        
+        <div class="w-full max-w-md mx-auto animate-fade-up animate-delay-300">
+          <div class="relative">
+            <form id="domain-form" class="flex flex-col sm:flex-row gap-3">
+              <div class="relative flex-grow">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-base-content/50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                  </svg>
+                </div>
+                <input 
+                  type="text" 
+                  id="domain-input" 
+                  placeholder="Enter your domain" 
+                  class="input input-bordered w-full pl-10 pr-16 focus:input-primary" 
+                  required
+                />
+              </div>
+              <button type="submit" class="btn btn-primary">
+                Check Status
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </button>
+            </form>
+            
+            <div id="status-message" class="mt-4 flex justify-center items-center hidden">
+              <svg id="status-icon" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"></svg>
+              <span id="status-text" class="font-medium"></span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6 text-sm text-base-content/70 animate-fade-up animate-delay-400">
+          <div class="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            <span>No credit card required</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            <span>Free plan available</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            <span>Cancel anytime</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <style>
+    .bg-grid-pattern {
+      background-image: 
+        linear-gradient(to right, rgba(0,0,0,0.1) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0,0,0,0.1) 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
+  </style>
+  
+  <script>
+    // Domain form submission handler
+    document.getElementById("domain-form")?.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const domainInput = document.getElementById("domain-input") as HTMLInputElement;
+      const domain = domainInput.value;
+      const statusMessage = document.getElementById("status-message");
+      const statusIcon = document.getElementById("status-icon");
+      const statusText = document.getElementById("status-text");
+  
+      if (!statusMessage || !statusIcon || !statusText) return;
+  
+      // Show loading state
+      statusMessage.classList.remove("hidden");
+      statusIcon.innerHTML = `<svg class="animate-spin h-5 w-5 text-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+      </svg>`;
+      statusText.textContent = "Checking domain status...";
+      statusText.className = "font-medium text-base-content";
+  
+      // Simulating an API call
+      setTimeout(() => {
+        const isUp = Math.random() < 0.8; // 80% chance the site is up
+        
+        if (isUp) {
+          statusIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />';
+          statusIcon.classList.add("text-success");
+          statusIcon.classList.remove("text-error");
+          statusText.textContent = `${domain} is up and running!`;
+          statusText.className = "font-medium text-success";
+        } else {
+          statusIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />';
+          statusIcon.classList.add("text-error");
+          statusIcon.classList.remove("text-success");
+          statusText.textContent = `${domain} appears to be down!`;
+          statusText.className = "font-medium text-error";
+        }
+      }, 1500);
+    });
+  </script>
+  
+  

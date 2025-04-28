@@ -1,0 +1,62 @@
+---
+const steps = [
+  {
+    number: "1",
+    title: "Enter your domain",
+    description: "Simply enter any domain you want to monitor in our search bar."
+  },
+  {
+    number: "2",
+    title: "Get instant insights",
+    description: "Receive immediate information about your domain's status and health."
+  },
+  {
+    number: "3",
+    title: "Set up monitoring",
+    description: "Configure alerts and monitoring parameters based on your needs."
+  },
+  {
+    number: "4",
+    title: "Stay informed",
+    description: "Get notified about any issues or changes to your domains in real-time."
+  }
+];
+---
+
+<section id="how-it-works" class="py-20 bg-base-100">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <div class="badge badge-secondary mb-4">How It Works</div>
+      <h2 class="text-3xl md:text-4xl font-extrabold mb-4">
+        Simple steps to monitor your domains
+      </h2>
+      <p class="text-lg text-base-content/70">
+        Get started in minutes with our easy-to-use platform
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      {steps.map((step) => (
+        <div class="relative">
+          <div class="absolute -top-8 -left-6 text-5xl font-bold text-base-content/5">{step.number}</div>
+          <div class="card bg-base-200 h-full">
+            <div class="card-body">
+              <h3 class="card-title text-xl font-bold">{step.title}</h3>
+              <p class="text-base-content/70">{step.description}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+    
+    <div class="mt-16 text-center">
+      <a href="#" class="btn btn-primary btn-lg">
+        Get Started Now
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
